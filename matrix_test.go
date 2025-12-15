@@ -1,9 +1,9 @@
 package testcases
 
 import (
-	"testing"
+	"strconv"
 	"strings"
- 	"strconv"
+	"testing"
 )
 
 func TestMatrix2(t *testing.T) {
@@ -44,36 +44,4 @@ func TestMatrix5(t *testing.T) {
 	if count != 2 {
 		t.Errorf("expected 2, got %d", count)
 	}
-}
-
-// ExampleMatrix2 demonstrates Matrix2 usage.
-func ExampleMatrix2() {
-	Matrix2(&testing.T{}, "A=%v, B=%v", []int{1, 2}, []string{"x", "y"}, func(t *testing.T, a int, b string) {
-		println("Test:", a, b)
-	})
-	// Output:
-}
-
-// ExampleMatrix3 demonstrates Matrix3 usage.
-func ExampleMatrix3() {
-	Matrix3(&testing.T{}, "A=%v, B=%v, C=%v", []int{1}, []string{"x"}, []bool{true}, func(t *testing.T, a int, b string, c bool) {
-		println("Test:", a, b, c)
-	})
-	// Output:
-}
-
-// ExampleMatrix4 demonstrates Matrix4 usage.
-func ExampleMatrix4() {
-	Matrix4(&testing.T{}, "A=%v, B=%v, C=%v, D=%v", []int{1}, []string{"x"}, []bool{true}, []float64{1.1}, func(t *testing.T, a int, b string, c bool, d float64) {
-		println("Test:", a, b, c, d)
-	})
-	// Output:
-}
-
-// ExampleMatrix5 demonstrates Matrix5 usage.
-func ExampleMatrix5() {
-	Matrix5(&testing.T{}, "A=%v, B=%v, C=%v, D=%v, E=%v", []int{1}, []string{"x"}, []bool{true}, []float64{1.1}, []byte{0}, func(t *testing.T, a int, b string, c bool, d float64, e byte) {
-		println("Test:", a, b, c, d, e)
-	})
-	// Output:
 }

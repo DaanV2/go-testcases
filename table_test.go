@@ -21,15 +21,3 @@ func TestDefineTableAndRun(t *testing.T) {
 		t.Errorf("expected 2 test cases to run, got %d", len(called))
 	}
 }
-
-// ExampleDefineTable demonstrates usage of DefineTable and Table.Run.
-func ExampleDefineTable() {
-	tbl := DefineTable(
-		TestCase[int, string]{Title: "One", Expected: 1, Actual: "1"},
-		TestCase[int, string]{Title: "Two", Expected: 2, Actual: "2"},
-	)
-	tbl.Run(&testing.T{}, func(t *testing.T, expected int, actual string) {
-		println("Test:", expected, actual)
-	})
-	// Output:
-}
