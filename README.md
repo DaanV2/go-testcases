@@ -2,6 +2,12 @@
 
 Go Testcases provides utilities for writing table-driven and matrix-style tests in Go, making it easier to cover combinations of test cases with minimal boilerplate.
 
+## Install
+
+```bash
+go get github.com/daanv2/go-testcases
+```
+
 ## Features
 
 - **MatrixN**: Run subtests for all combinations of multiple input slices (Matrix2, Matrix3, etc.).
