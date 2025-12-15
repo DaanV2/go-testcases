@@ -1,14 +1,17 @@
-package testcases
+// nolint:thelper // because of t.Helper usage in testcases package
+package testcases_test
 
 import (
 	"strconv"
 	"testing"
+
+	"github.com/daanv2/go-testcases"
 )
 
 func TestDefineTableAndRun(t *testing.T) {
-	tbl := DefineTable(
-		TestCase[int, string]{Title: "One", Expected: 1, Actual: "1"},
-		TestCase[int, string]{Title: "Two", Expected: 2, Actual: "2"},
+	tbl := testcases.DefineTable(
+		testcases.TestCase[int, string]{Title: "One", Expected: 1, Actual: "1"},
+		testcases.TestCase[int, string]{Title: "Two", Expected: 2, Actual: "2"},
 	)
 	var called []string
 	tbl.Run(t, func(t *testing.T, expected int, actual string) {

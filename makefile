@@ -6,3 +6,9 @@ test:
 
 show-coverage-report: test
 	go tool cover -html=reports/coverage.out
+
+lint:
+	golangci-lint run -v --fix
+
+install-lint:
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest

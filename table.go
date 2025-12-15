@@ -16,9 +16,9 @@ type Table[Exptected any, Actual any] struct {
 
 // DefineTable creates a Table of test cases from the provided items.
 // Example:
-//	tbl := DefineTable[int, string](
-//	    TestCase[int, string]{Title: "Test 1", Expected: 1, Actual: "one"},
-//	    TestCase[int, string]{Title: "Test 2", Expected: 2, Actual: "two"},
+//	tbl := testcases.DefineTable[int, string](
+//	    testcases.TestCase[int, string]{Title: "Test 1", Expected: 1, Actual: "one"},
+//	    testcases.TestCase[int, string]{Title: "Test 2", Expected: 2, Actual: "two"},
 //	)
 //	tbl.Run(t, func(t *testing.T, expected int, actual string) {
 // 	   // test logic here
