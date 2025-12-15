@@ -10,15 +10,25 @@ go get github.com/daanv2/go-testcases
 
 ## Features
 
+- **Each**: Run subtests for each element in a single input slice.
 - **MatrixN**: Run subtests for all combinations of multiple input slices (Matrix2, Matrix3, etc.).
 - **Table**: Define and run table-driven tests with custom titles and expected/actual values.
 
 ## Examples
 
+### Each Example
+
+```go
+testcases.Each(t, []int{1, 2, 3}, func(t *testing.T, num int) {
+    // Your test logic here
+    t.Logf("Testing number: %d", num)
+})
+```
+
 ### Matrix2 Example
 
 ```go
-Matrix2(t, "Test with %v and %v", []int{1, 2}, []string{"a", "b"}, func(t *testing.T, num int, str string) {
+testcases.Matrix2(t, "Test with %v and %v", []int{1, 2}, []string{"a", "b"}, func(t *testing.T, num int, str string) {
 	// Your test logic here
 	t.Logf("Testing %d and %s", num, str)
 })
@@ -27,7 +37,7 @@ Matrix2(t, "Test with %v and %v", []int{1, 2}, []string{"a", "b"}, func(t *testi
 ### Matrix3 Example
 
 ```go
-Matrix3(t, "Test with %v, %v and %v", []int{1, 2}, []string{"a", "b"}, []bool{true, false}, func(t *testing.T, num int, str string, flag bool) {
+testcases.Matrix3(t, "Test with %v, %v and %v", []int{1, 2}, []string{"a", "b"}, []bool{true, false}, func(t *testing.T, num int, str string, flag bool) {
 	// Your test logic here
 	t.Logf("Testing %d, %s, %v", num, str, flag)
 })
@@ -36,9 +46,9 @@ Matrix3(t, "Test with %v, %v and %v", []int{1, 2}, []string{"a", "b"}, []bool{tr
 ### Table Example
 
 ```go
-tbl := DefineTable(
-	TestCase[int, string]{Title: "One", Expected: 1, Actual: "1"},
-	TestCase[int, string]{Title: "Two", Expected: 2, Actual: "2"},
+tbl := testcases.DefineTable(
+	testcases.TestCase[int, string]{Title: "One", Expected: 1, Actual: "1"},
+	testcases.TestCase[int, string]{Title: "Two", Expected: 2, Actual: "2"},
 )
 tbl.Run(t, func(t *testing.T, expected int, actual string) {
 	if strconv.Itoa(expected) != actual {
