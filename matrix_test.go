@@ -1,5 +1,4 @@
-// nolint:thelper // because of t.Helper usage in testcases package
-// nolint:testableexamples // because examples use testing.T parameter
+// nolint:thelper,testableexamples // because of t.Helper usage in testcases package
 package testcases_test
 
 import (
