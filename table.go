@@ -2,12 +2,14 @@ package testcases
 
 import "testing"
 
+// TestCase represents a single test case with expected and actual values.
 type TestCase[Exptected any, Actual any] struct {
 	Title    string
 	Expected Exptected
 	Actual   Actual
 }
 
+// Table holds a collection of test cases.
 type Table[Exptected any, Actual any] struct {
 	Cases []TestCase[Exptected, Actual]
 }
