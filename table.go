@@ -4,9 +4,18 @@ import "testing"
 
 // TestCase represents a single test case with expected and actual values.
 type TestCase[Exptected any, Actual any] struct {
-	Title    string
-	Expected Exptected
-	Actual   Actual
+	Title  string
+	Input  Exptected
+	Result Actual
+}
+
+// NewCase creates a new TestCase instance.
+func NewCase[Exptected any, Actual any](title string, input Exptected, result Actual) TestCase[Exptected, Actual] {
+	return TestCase[Exptected, Actual]{
+		Title:  title,
+		Input:  input,
+		Result: result,
+	}
 }
 
 // Table holds a collection of test cases.
@@ -28,12 +37,12 @@ func DefineTable[Exptected any, Actual any](items ...TestCase[Exptected, Actual]
 }
 
 // Run executes the test cases defined in the Table.
-func (tbl Table[Exptected, Actual]) Run(t *testing.T, fn func(t *testing.T, expected Exptected, actual Actual)) {
+func (tbl Table[Exptected, Actual]) Run(t *testing.T, fn func(t *testing.T, input Exptected, result Actual)) {
 	t.Helper()
 
 	for _, tc := range tbl.Cases {
 		t.Run(tc.Title, func(t *testing.T) {
-			fn(t, tc.Expected, tc.Actual)
+			fn(t, tc.Input, tc.Result)
 		})
 	}
 }

@@ -47,8 +47,8 @@ testcases.Matrix3(t, "Test with %v, %v and %v", []int{1, 2}, []string{"a", "b"},
 
 ```go
 tbl := testcases.DefineTable(
-	testcases.TestCase[int, string]{Title: "One", Expected: 1, Actual: "1"},
-	testcases.TestCase[int, string]{Title: "Two", Expected: 2, Actual: "2"},
+	testcases.NewCase("One", 1, "1"),
+	testcases.NewCase("Two", 2, "2"),
 )
 tbl.Run(t, func(t *testing.T, expected int, actual string) {
 	if strconv.Itoa(expected) != actual {
