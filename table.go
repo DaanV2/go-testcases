@@ -36,6 +36,12 @@ func DefineTable[Exptected any, Actual any](items ...TestCase[Exptected, Actual]
 	return Table[Exptected, Actual]{Cases: items}
 }
 
+// Add appends a new test case to the Table.
+func (t *Table[Exptected, Actual]) Add(title string, input Exptected, result Actual) *Table[Exptected, Actual] {
+	t.Cases = append(t.Cases, NewCase(title, input, result))
+	return t
+}
+
 // Run executes the test cases defined in the Table.
 func (tbl Table[Exptected, Actual]) Run(t *testing.T, fn func(t *testing.T, input Exptected, result Actual)) {
 	t.Helper()
