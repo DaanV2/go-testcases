@@ -39,6 +39,7 @@ func DefineTable[Exptected any, Actual any](items ...TestCase[Exptected, Actual]
 // Add appends a new test case to the Table.
 func (t *Table[Exptected, Actual]) Add(title string, input Exptected, result Actual) *Table[Exptected, Actual] {
 	t.Cases = append(t.Cases, NewCase(title, input, result))
+
 	return t
 }
 
