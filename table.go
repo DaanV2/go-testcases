@@ -1,6 +1,9 @@
 package testcases
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 // TestCase represents a single test case with expected and actual values.
 type TestCase[Exptected any, Actual any] struct {
@@ -38,6 +41,17 @@ func DefineTable[Exptected any, Actual any](items ...TestCase[Exptected, Actual]
 
 // Add appends a new test case to the Table.
 func (t *Table[Exptected, Actual]) Add(title string, input Exptected, result Actual) *Table[Exptected, Actual] {
+	t.Cases = append(t.Cases, NewCase(title, input, result))
+
+	return t
+}
+
+// Addf appends a new test case to the Table with a formatted title.
+// Example:
+//	tbl.Addf("Test with input %d and result %s", 1, "one")
+func (t *Table[Exptected, Actual]) Addf(titleMsg string, input Exptected, result Actual) *Table[Exptected, Actual] {
+	title := fmt.Sprintf(titleMsg, input, result)
+
 	t.Cases = append(t.Cases, NewCase(title, input, result))
 
 	return t
